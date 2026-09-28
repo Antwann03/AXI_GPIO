@@ -2,7 +2,11 @@
 During this lab we will be learning the design flow of using the Zynq SoC. By completing this lab we should be able to create a Zynq hardware project, configure a Zynq PS, and have interaction with the Zynq PS and PL side.
 
 # Design Summary
-Starting from the PL side we will create a Zynq SoC design using Vivado Block Design Feature. Next, we will need to make sure we have multiple AXI GPIO peripherals so we can interact with RGB LEDS, LEDS and SWITCHES.
+Starting from the PL side we will create a Zynq SoC design using Vivado Block Design Feature. Next, we will need to make sure we have multiple AXI GPIO peripherals so we can interact with RGB LEDS, LEDS and SWITCHES. 
+
+Each AXI GPIO peripheral serves its own purpose, one for LEDS, one for the RGB LED, and one for Switches. Depending on which switches are active, a specific color will display on the RGB LED, while the LEDS will either run a Binary Counter or Ring Counter Sequence. 
+
+The switch unput is read as a 4-bit value. Bit 0 (SW0) activates Red, Bit 1 (SW1) activates Blue, and Bit 3 (SW3) activates White. When SW0 and SW1 are both on (0x3), the LEDS run a Binary Counter. When SW2 and SW3 are both on (OxC), the LEDS run a Ring Counter. All other combinations turn the LEDS off.
 
 # Verification and Testing
 There is no TestBench for this Lab.
